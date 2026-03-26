@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/convert.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/poker.png') }}">
 </head>
+
 <body>
     <div class="card-icons-container" id="cardIconsContainer"></div>
 
@@ -19,9 +21,15 @@
     <header class="header">
         <h1 class="welcome-text">♠️ Conversion Complete ♦️</h1>
         <p class="lead">Your PBN file is ready to download</p>
-        <a id="print-btn" class="btn">Download Board</a>
+        <!-- <a id="print-btn" class="btn">Download Board</a>
         <a id="print-front-btn" class="btn">Download Card Front</a>
-        <a id="print-2side-btn" class="btn">Download </a>
+        <a id="print-2side-btn" class="btn">Download </a> -->
+
+        <button id="print-front-btn">1. ปริ้นเฉพาะหน้า (Home)</button>
+        <button id="print-back-btn">2. ปริ้นเฉพาะหลัง (Home)</button>
+        <button id="print-duplex-btn">3. ปริ้นไฟล์เดียวหน้าหลัง (Shop)</button>
+
+        <div id="status" style="display:none;">กำลังประมวลผล...</div>
         <div class="progress-container">
             <div class="progress-bar"></div>
             <span class="progress-card">🃏</span>
@@ -32,10 +40,9 @@
     <div class="container">
         <section class="convert-section">
             <h2>🎲 Result</h2>
-            <div class="grid" id="cardFront" style="display:none;"></div>
             <div class="grid" id="board"></div>
+            <div class="grid" id="cardFront"></div>
         </section>
-        <div id="pdfHidden" style="display:none;"></div>
 
         {% if all_card_tracking %}
         <pre id="cardTrackingData" style="display: none;">
@@ -47,16 +54,17 @@
 
     <script src="{{ url_for('static', filename='js/bg.js') }}"></script>
     <script src="{{ url_for('static', filename='js/music.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/board.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/cardFront.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/board.js') }}"></script> -->
+    <!-- <script src="{{ url_for('static', filename='js/cardFront.js') }}"></script> -->
     <script src="{{ url_for('static', filename='js/cardFront2.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 </body>
+
 </html>
 
-    <!-- <script>
+<!-- <script>
         document.getElementById("print-btn").addEventListener("click", async function () {
             const printBtn = document.getElementById("print-btn");
             printBtn.textContent = "Downloading..."; // เปลี่ยนข้อความปุ่ม
@@ -121,4 +129,3 @@
 
         });
     </script> -->
-

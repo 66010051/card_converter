@@ -138,8 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             groupWrapper.appendChild(titleElement);
             groupWrapper.appendChild(cardElement);
-            document.getElementById("pdfHidden").appendChild(groupWrapper);
-            // boardElement.append(groupWrapper);
+            // document.getElementById("pdfHidden").appendChild(groupWrapper);
+            boardElement.append(groupWrapper);
 
         });
 
