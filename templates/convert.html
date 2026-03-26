@@ -18,24 +18,88 @@
         <img id="music-icon" src="{{ url_for('static', filename='images/music-icon.png') }}" alt="Music Control">
     </div>
 
-    <header class="header">
+<header class="header">
         <h1 class="welcome-text">♠️ Conversion Complete ♦️</h1>
         <p class="lead">Your PBN file is ready to download</p>
-        <!-- <a id="print-btn" class="btn">Download Board</a>
-        <a id="print-front-btn" class="btn">Download Card Front</a>
-        <a id="print-2side-btn" class="btn">Download </a> -->
 
-        <button id="print-front-btn">1. ปริ้นเฉพาะหน้า (Home)</button>
-        <button id="print-back-btn">2. ปริ้นเฉพาะหลัง (Home)</button>
-        <button id="print-duplex-btn">3. ปริ้นไฟล์เดียวหน้าหลัง (Shop)</button>
+        <a id="main-download-btn" class="btn" onclick="showPrintOptions()">
+            Download PDF
+        </a>
 
-        <div id="status" style="display:none;">กำลังประมวลผล...</div>
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-            <span class="progress-card">🃏</span>
+        <div id="print-options-section"
+            style="display: none; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 800px; margin: 30px auto 10px auto; align-items: stretch;">
+
+            <div style="flex: 1; min-width: 300px; background: #ffffff; border: 1px solid #eaeaea; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: left; display: flex; flex-direction: column;">
+                
+                <div style="display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 20px;">
+                    <span style="font-size: 2.5rem; color: #ff4d4d;">🖨️</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.3rem; color: #2c3e50; font-family: 'Segoe UI', sans-serif; font-weight: 600;">Standard Printer</h3>
+                        <span style="font-size: 0.85rem; color: #7f8c8d;">ปริ้นทีละหน้า (หน้า-หลัง)</span>
+                    </div>
+                </div>
+
+                <div style="background: #f8f9fa; border-left: 4px solid #ff4d4d; border-radius: 12px; padding: 15px 20px; flex-grow: 1; display: flex; align-items: center;">
+                    <ol style="margin: 0; padding-left: 15px; color: #555; font-size: 0.85rem; line-height: 1.8; font-family: 'Segoe UI', sans-serif;">
+                        <li>ดาวน์โหลด <b style="color: #000;">Front Card</b> และ <b style="color: #000;">Back Card</b></li>
+                        <li>สั่งพิมพ์ <b style="color: #000;">Front Card</b> เป็นอันดับแรก</li>
+                        <li>พลิกและหมุนกระดาษทั้งปึก โดยที่ไม่ต้องเรียงใหม่</li>
+                        <li>สั่งพิมพ์ <b style="color: #000;">Back Card</b> </li>
+                    </ol>
+                </div>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; width: 100%;">
+                                        <a id="print-front-btn" class="btn"
+                        style="background: #ff4d4d; color: white; border: 2px solid #ff4d4d; flex: 1; min-width: 130px; text-align: center; box-sizing: border-box; font-size: 0.95rem; border-radius: 12px; padding: 12px; font-weight: 600; text-transform: none; box-shadow: none; text-shadow: none; text-decoration: none; cursor: pointer;">
+                        Front Card
+                    </a>
+                    <a id="print-back-btn" class="btn"
+                        style="background: #ffffff; color: #ff4d4d; border: 2px solid #ff4d4d; flex: 1; min-width: 130px; text-align: center; box-sizing: border-box; font-size: 0.95rem; border-radius: 12px; padding: 12px; font-weight: 600; text-transform: none; text-shadow: none; box-shadow: none; text-decoration: none; cursor: pointer;">
+                        Back Card
+                    </a>
+                </div>
+
+                <p id="status-board" style="display: none; font-size: 0.85rem; color: #ff3b3b; margin-top: 15px; text-align: center;"></p>
+                <p id="status-front" style="display: none; font-size: 0.85rem; color: #ff3b3b; margin-top: 5px; text-align: center;"></p>
+            </div>
+
+            <div style="flex: 1; min-width: 300px; background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(52,152,219,0.15); text-align: left; display: flex; flex-direction: column;">
+                
+                <div style="display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #e1f0fa; padding-bottom: 15px; margin-bottom: 20px;">
+                    <span style="font-size: 2.5rem; color: #3498db;">🏢</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.3rem; color: #2c5282; font-family: 'Segoe UI', sans-serif; font-weight: 600;">Duplex Printer</h3>
+                        <span style="font-size: 0.85rem; color: #7f8c8d;">เครื่องปริ้นรองรับหน้า-หลังอัตโนมัติ</span>
+                    </div>
+                </div>
+
+                <div style="background: #f8f9fa; border-left: 4px solid #3498db; border-radius: 12px; padding: 15px 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; text-align: center;">
+                    <p style="margin: 0 0 5px 0; font-size: 0.90rem; color: #2c5282; font-weight: bold;">
+                        ดาวน์โหลดไฟล์เดียวจบ!
+                    </p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #7f8c8d;">
+                        ตอนสั่งปริ้นให้ตั้งค่าเป็น <b style="color: #3498db;">Two-Sided</b>
+                    </p>
+                </div>
+
+                <div style="width: 100%;">
+                    <a id="print-duplex-btn" class="btn" style="display: block; width: 100%; text-align: center; box-sizing: border-box; font-size: 1rem; background: #3498db; color: white; border: none; border-radius: 12px; padding: 14px; font-weight: bold; text-transform: none; text-shadow: none; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); text-decoration: none; cursor: pointer;">
+                        Download Duplex PDF
+                    </a>
+                </div>
+
+                <p id="status-duplex" style="display: none; font-size: 0.85rem; color: #ff3b3b; margin-top: 15px; text-align: center;"></p>
+            </div>
+
         </div>
-        <p id="status" style="display: none;"></p>
     </header>
+
+    <script>
+        function showPrintOptions() {
+            document.getElementById('main-download-btn').style.display = 'none';
+            document.getElementById('print-options-section').style.display = 'flex';
+        }
+    </script>
 
     <div class="container">
         <section class="convert-section">

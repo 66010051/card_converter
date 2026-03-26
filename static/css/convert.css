@@ -15,7 +15,7 @@ body {
 .header {
     padding: 20px 20px;
     position: relative;
-    z-index: 2;
+    z-index: 70;
 }
 
 .welcome-text {

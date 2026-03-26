@@ -4,10 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const box = document.getElementById("download-options");
 
     btn.addEventListener("click", () => {
-
         btn.style.display = "none";
         box.style.display = "block";
-
     });
 
     document.getElementById("board-download").onclick = () => {
