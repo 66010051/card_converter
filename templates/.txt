@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/convert.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/poker.png') }}">
 </head>
+
 <body>
     <div class="card-icons-container" id="cardIconsContainer"></div>
 
@@ -17,25 +19,66 @@
     </div>
 
     <header class="header">
-        <h1 class="welcome-text">♠️ Conversion Complete ♦️</h1>
-        <p class="lead">Your PBN file is ready to download</p>
-        <a id="print-btn" class="btn">Download Board</a>
-        <a id="print-front-btn" class="btn">Download Card Front</a>
-        <a id="print-2side-btn" class="btn">Download </a>
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-            <span class="progress-card">🃏</span>
+    <h1 class="welcome-text">♠️ Conversion Complete ♦️</h1>
+    <p class="lead">Your PBN file is ready to download</p>
+    <a id="download-btn" class="btn">Download PBN File</a>
+
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+        <span class="progress-card">🃏</span>
+    </div>
+    <p id="main-status" class="status-text" style="display: none;"></p>
+
+    <div id="download-options" class="download-box">
+        <h3> เลือกวิธีพิมพ์ (Print Options)</h3>
+        
+        <div class="option-row">
+            <div class="option-section">
+                <div class="section-info">
+                    <h4>Printer ทั่วไป</h4>
+                    <p class="instruction">
+                        1. ดาวน์โหลด Board<br>
+                        2. ดาวน์โหลด Card Front<br>
+                        3. พิมพ์ Board ก่อน<br>
+                        4. กลับกระดาษแล้วพิมพ์ Card Front
+                    </p>
+                </div>
+                <div class="section-actions">
+                    <a id="print-btn" class="btn">Download Board</a>
+                    <p id="status-board" class="status-text" style="display: none;"></p>
+
+                    <a id="print-front-btn" class="btn">Download Card Front</a>
+                    <p id="status-front" class="status-text" style="display: none;"></p>
+                </div>
+            </div>
+
+            <div class="option-section">
+                <div class="section-info">
+                    <h4>Printer Duplex</h4>
+                    <p class="instruction">
+                        ดาวน์โหลดไฟล์เดียวจบ!<br>
+                        แล้วตอนปริ้นให้ตั้งค่าเป็น <b>Two-Sided (หน้า-หลัง)</b>
+                    </p>
+                </div>
+                <div class="section-actions">
+                    <a id="print-2side-btn" class="btn">Download Duplex PDF</a>
+                    <div class="progress-container">
+                        <div class="progress-bar"></div>
+                        <span class="progress-card">🃏</span>
+                    </div>
+                    <p id="status-duplex" class="status-text" style="display: none;"></p>
+                </div>
+            </div>
         </div>
-        <p id="status" style="display: none;"></p>
-    </header>
+    </div>
+</header>
 
     <div class="container">
         <section class="convert-section">
             <h2>🎲 Result</h2>
-            <div class="grid" id="cardFront" style="display:none;"></div>
+            <div class="grid" id="cardFront"></div>
             <div class="grid" id="board"></div>
         </section>
-        <div id="pdfHidden" style="display:none;"></div>
 
         {% if all_card_tracking %}
         <pre id="cardTrackingData" style="display: none;">
@@ -43,6 +86,7 @@
             {% endfor %}
         </pre>
         {% endif %}
+        <div id="pdfHidden" style="display:none;"></div>
     </div>
 
     <script src="{{ url_for('static', filename='js/bg.js') }}"></script>
@@ -50,13 +94,15 @@
     <script src="{{ url_for('static', filename='js/board.js') }}"></script>
     <script src="{{ url_for('static', filename='js/cardFront.js') }}"></script>
     <script src="{{ url_for('static', filename='js/cardFront2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/downloadMenu.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 </body>
+
 </html>
 
-    <!-- <script>
+<!-- <script>
         document.getElementById("print-btn").addEventListener("click", async function () {
             const printBtn = document.getElementById("print-btn");
             printBtn.textContent = "Downloading..."; // เปลี่ยนข้อความปุ่ม
@@ -121,4 +167,3 @@
 
         });
     </script> -->
-

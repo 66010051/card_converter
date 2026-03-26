@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             groupWrapper.appendChild(titleElement);
             groupWrapper.appendChild(table);
-            boardElement.appendChild(groupWrapper);
+            boardElement.append(groupWrapper);
         });
     });
 

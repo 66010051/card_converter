@@ -154,6 +154,92 @@ header .btn:disabled, #print-btn:disabled {
     z-index: 1;
 }
 
+/* ===============================
+   พื้นหลังกรอบรวม (Download Box)
+=============================== */
+.download-box {
+    display: block; /* เปลี่ยนเป็น none หากต้องการซ่อนไว้ก่อน */
+    margin-top: 40px;
+    padding: 30px 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* เพิ่มเงาให้ดูมีมิติ */
+    border: 1px solid #eaeaea;
+    color: #333;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.download-box h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #111;
+    font-size: 22px;
+}
+
+/* ===============================
+   จัด Layout แบบการ์ดซ้าย-ขวา
+=============================== */
+.option-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch; /* ให้กล่องซ้ายขวาสูงเท่ากันเสมอ */
+    flex-wrap: wrap; /* เผื่อหน้าจอมือถือจะพับลงมา */
+}
+
+/* ===============================
+   หน้าตาของการ์ดตัวเลือกแต่ละอัน
+=============================== */
+.option-section {
+    flex: 1;
+    min-width: 280px;
+    padding: 25px 20px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+
+.option-section:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    border-color: #d40000;
+    background: #ffffff;
+}
+
+.option-section h4 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #222;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.option-section .instruction {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+/* ===============================
+   Status Text (ข้อความแจ้งเตือน)
+=============================== */
+.status-text {
+    font-size: 13px;
+    color: #d40000;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
 @keyframes pulseBorder {
     0% { box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5); }
     50% { box-shadow: 0 5px 25px rgba(255, 59, 59, 1); }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert PBN to PDF</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/board.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/music.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/convert.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1 class="welcome-text">♠️ Conversion Complete ♦️</h1>
+    <p class="lead">Your PBN file is ready to download</p>
+
+    <button id="print-btn" class="btn">DOWNLOAD</button>
+
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+        <span class="progress-card">🃏</span>
+    </div>
+
+    <p id="status" style="display:none;"></p>
+</header>
+
+<div class="container">
+    <section class="convert-section">
+        <h2>🎲 Result</h2>
+
+        <!-- 👇 ตรงนี้คือที่ JS จะสร้างไพ่ -->
+        <div id="cardFront"></div>
+
+    </section>
+
+    {% if all_card_tracking %}
+    <pre id="cardTrackingData" style="display:none;">
+{% for card, positions in all_card_tracking.items() %}
+{{ card }}={{ positions }}
+{% endfor %}
+    </pre>
+    {% endif %}
+</div>
+
+<!-- Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- JS ของคุณ -->
+<script src="{{ url_for('static', filename='js/board.js') }}"></script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&display=swap');
 
 body {
-    font-family: 'Playfair Display', sans-serif;
+    font-family: 'Playfair Display', Arial,'Segoe UI Symbol','Noto Sans Symbols', sans-serif;
     background: radial-gradient(circle, #3e3b3b, #000000);
     color: white;
     margin: 0;
@@ -14,6 +14,7 @@ body {
 
 .header {
     padding: 40px 20px;
+    font-family: 'Playfair Display', Arial,'Segoe UI Symbol','Noto Sans Symbols', sans-serif;
     position: relative;
     z-index: 2; 
 }

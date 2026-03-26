@@ -4,7 +4,7 @@ import os
 from io import BytesIO
 from fpdf import FPDF
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 app.secret_key = 'your_secret_key'  
 UPLOAD_FOLDER = 'uploads'
